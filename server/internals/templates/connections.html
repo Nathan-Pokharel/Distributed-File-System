@@ -1,0 +1,16 @@
+{{define "title"}}
+    Connections
+{{end}}
+{{ define "content" }}
+<div class="content">
+    {{ range $conn, $data := .Connections }}
+    <div class="grid-container" onclick="window.location.href='/fs/{{$conn.RemoteAddr}}'">
+        <div class="grid-content" >
+            <h2 class="grid-title">
+                <i class="fa-brands fa-codepen"></i> {{$conn.RemoteAddr}} 
+            </h2>
+        </div>
+    </div>
+    {{ end }}
+</div>
+{{ end }}

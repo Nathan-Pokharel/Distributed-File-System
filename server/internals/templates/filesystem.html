@@ -1,0 +1,67 @@
+{{define "title"}}
+    UGSAFSA
+{{end}}
+{{ define "content" }}
+<div class = "content">
+<div class="grid-container" onclick="figureoutfilesystem('pvd')">
+    <div class="grid-content" >
+        <h2 class="grid-title">
+            <i class="fas fa-folder"></i> ../
+        </h2>
+    </div>
+</div>
+{{range .Files}}
+<div class="grid-container" >
+        <div class="grid-content" >
+            <h2 class="grid-title">
+                <i class="fas fa-file"></i> {{.}}
+            </h2>
+        </div>
+    </div>
+{{end}}
+{{range .Folders}}
+    <div class="grid-container" onclick="figureoutfilesystem('{{.}}')">
+        <div class="grid-content">
+            <h2 class="grid-title">
+                <i class="fas fa-folder"></i> {{.}}
+            </h2>
+        </div>
+    </div>
+{{end}}
+</div>
+<script>
+    var cwd = '{{.Cwd}}'
+    console.log(cwd)
+    function figureoutfilesystem(param){
+        if (param ==="pvd"){
+            cwd = cwd.slice(0,cwd.lastIndexOf('/'));
+            sendCwdToServer();
+        } else {
+            cwd = cwd + "/" + param;
+            sendCwdToServer();
+        }
+    }
+    function sendCwdToServer() {
+    var xhr = new XMLHttpRequest();
+
+    xhr.open("POST", "/ufs/", true);
+
+    xhr.setRequestHeader("Content-Type", "application/json");
+
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+                window.location.reload(true);
+            } else {
+                console.error("Failed to send CWD to server.");
+            }
+        }
+    };
+
+    // Convert the CWD variable to JSON and send it in the request body
+    var cwdData = JSON.stringify({ cwd: cwd });
+    xhr.send(cwdData);
+}
+
+</script>
+{{ end }}

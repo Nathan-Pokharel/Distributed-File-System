@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{{template "title" .}}</title>
+    </head>
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+
+.content{
+    margin-top: 40px;
+    display: flex;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    gap:0px;
+    flex-direction: column;
+    padding-bottom:7px;
+}
+.grid-content {
+    background-color:#272729;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding:0 30px;
+    border-radius:0px;
+    border-bottom:1px dotted #bdbdc0;
+}
+.cwd{
+    text-align: center;
+    margin-top: 20px;
+}
+.grid-title {
+    white-space:nowrap;
+    overflow:hidden;
+    width:550px;
+    max-width:100%;
+    text-overflow:ellipsis;
+    font-size:17px;
+    font-weight:600;
+}
+.grid-title i {
+    margin-right:18px;
+    font-size:21px;
+}
+.grid-container:hover {
+    border-color: rgba(255, 255, 255, 0.25);
+}
+.grid-container {
+    cursor:pointer;
+    display: flex;
+    border: 3px solid rgba(255,255,255,0.08);
+    height:65px;
+    border-radius:0px;
+    width: 90%; /* Set the width to 80% of the parent element's width */
+    transition: border-color 0.2s; /* Add the transition property for border-color */
+}
+
+.connections {
+    cursor:pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    float:left;
+    width: 180px; /* Adjust the size as needed */
+    height: 180px; /* Adjust the size as needed */
+    background-color: #242323;
+    margin: 30px;
+    position: relative;
+}
+
+/* Style for the offset squares */
+.offset-square {
+    position: absolute;
+    top: 10px; /* Adjust the offset as needed */
+    left: 10px; /* Adjust the offset as needed */
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    border-radius: 5px;
+    z-index: -1;
+}
+
+/* Style for the title */
+.title {
+    color:white;
+    text-align: center;
+    top:50%;
+    left:50%;
+    font-weight: bold;
+    padding: 5px;
+}
+
+/* Style for files, folders, and wd */
+.files,
+.folders,
+.wd {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #FFF;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    padding: 5px;
+    border-radius: 5px;
+    z-index: 1;
+}
+
+.connections:hover .wd {
+    display: block;
+    width:301px;
+}
+    body {
+        background-color: #151517;
+        height:100vh;
+        width:100vw;
+        color:white;
+        position: relative; 
+    }
+
+    .top-right {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+    }
+
+    .bottom-left {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+    }
+
+    .bottom-right {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+    }
+    </style>
+    <body>
+        <header>
+            <div class="logo">
+                <span>Nathan</span>
+            </div>
+        </header>
+        <main>
+            {{ template "content" . }}
+        </main>
+
+        <div class="top-right">Distributed File System</div>
+        <div class="bottom-left">(This is merely a demo website)</div>
+        <div class="bottom-right">Connect To The server through a tcp connection at {ip}:8080 and your file system will be exposed.</div>
+    </body>
+</html>
+
