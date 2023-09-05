@@ -2,5 +2,9 @@
 
 #Demo
 
-https://github.com/Nathan-Pokharel/Distributed-File-System/assets/105137753/acc7a02b-9e07-4990-bea8-cc3a9e5b7ecf
+
+
+
+
+https://github.com/Nathan-Pokharel/Distributed-File-System/assets/105137753/491559e6-d569-4744-b3e1-02d3c02dad88
 
