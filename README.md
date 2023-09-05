@@ -1,4 +1,6 @@
 # Distributed-File-System
 
 #Demo
-https://github.com/Nathan-Pokharel/Distributed-File-System/assets/105137753/081bc48c-1857-4d8d-85c1-17a936b533db
+
+https://github.com/Nathan-Pokharel/Distributed-File-System/assets/105137753/acc7a02b-9e07-4990-bea8-cc3a9e5b7ecf
+
